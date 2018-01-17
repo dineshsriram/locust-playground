@@ -10,7 +10,8 @@ class UserBehavior(TaskSet):
 
     @task
     def getAllUsers(self):
-        self.client.get("/user")
+        response=self.client.get("/user")
+	print(response.content)
 
     @task
     def getUserId(self):
@@ -18,6 +19,5 @@ class UserBehavior(TaskSet):
 
 class User(HttpLocust):
     task_set = UserBehavior
-    host="http://0.0.0.0:5000"
     min_wait = 500
     max_wait = 1000
